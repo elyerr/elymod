@@ -1,0 +1,33 @@
+{
+  "name": "elyerr/elymod",
+  "version": "1.0.0",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Elyerr\\Elymod\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\" : "database/seeders/",
+      "App\\": "support/app/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Elyerr\\Elymod\\ModuleServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "nesbot/carbon": "^3.10",
+    "ramsey/uuid": "^4.9",
+    "elyerr/api-response": "^1.0"
+  },
+  "require-dev": {
+    "php": "^8.2",
+    "laravel/framework": "^12.0",
+    "laravel/tinker": "^2.10.1",
+    "fakerphp/faker": "2.0.x-dev"
+  },
+  "minimum-stability": "stable"
+}
