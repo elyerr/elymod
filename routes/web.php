@@ -1,5 +1,5 @@
 <?php
- /**
-  * Register routes web
-  */
- 
+
+Route::get('/', function () {
+    return view("Elymod::welcome");
+})->name('welcome');

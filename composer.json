@@ -5,29 +5,30 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Elyerr\\Elymod\\": "app/",
-      "Database\\Factories\\": "database/factories/",
-      "Database\\Seeders\\" : "database/seeders/",
-      "App\\": "support/app/"
+      "Elymod\\App\\": "app/",
+      "Elymod\\Database\\Factories\\": "database/factories/",
+      "Elymod\\Database\\Seeders\\": "database/seeders/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Elyerr\\Elymod\\ModuleServiceProvider"
+        "Elymod\\App\\Providers\\ServiceProvider"
       ]
     }
   },
   "require": {
-    "nesbot/carbon": "^3.10",
-    "ramsey/uuid": "^4.9",
-    "elyerr/api-response": "^1.0"
+    "elyerr/api-response": "^1.0",
+    "brick/math": "^0.14.1"
   },
   "require-dev": {
-    "php": "^8.2",
-    "laravel/framework": "^12.0",
-    "laravel/tinker": "^2.10.1",
-    "fakerphp/faker": "2.0.x-dev"
+    "laravel/framework": "^12.42",
+    "elyerr/laravel-runtime": "v1.*"
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
 }
