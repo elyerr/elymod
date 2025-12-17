@@ -1,5 +1,5 @@
 <?php
-namespace Elymod\App\Providers;
+namespace {{ Namespace }}\App\Providers;
 
 use Elyerr\ApiResponse\Exceptions\ReportError;
 use Illuminate\Routing\Router;

@@ -1,5 +1,5 @@
 <?php
 
 Route::get('/', function () {
-    return view("Elymod::welcome");
+    return view('{{ Module }}::welcome');
 })->name('welcome');

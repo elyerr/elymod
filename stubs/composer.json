@@ -1,0 +1,33 @@
+{
+  "name": "elyerr/{{ module }}",
+  "version": "1.0.0",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "{{ Namespace }}\\App\\": "app/",
+      "{{ Namespace }}\\Database\\Factories\\": "database/factories/",
+      "{{ Namespace }}\\Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "{{ Namespace }}\\App\\Providers\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "elyerr/api-response": "^1.0"
+  },
+  "require-dev": {
+    "laravel/framework": "^12.42",
+    "elyerr/laravel-runtime": "v1.*"
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}

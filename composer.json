@@ -1,34 +1,17 @@
 {
-  "name": "elyerr/elymod",
-  "version": "1.0.0",
-  "type": "project",
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Elymod\\App\\": "app/",
-      "Elymod\\Database\\Factories\\": "database/factories/",
-      "Elymod\\Database\\Seeders\\": "database/seeders/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Elymod\\App\\Providers\\ServiceProvider"
-      ]
-    }
-  },
-  "require": {
-    "elyerr/api-response": "^1.0",
-    "brick/math": "^0.14.1"
-  },
-  "require-dev": {
-    "laravel/framework": "^12.42",
-    "elyerr/laravel-runtime": "v1.*"
-  },
-  "minimum-stability": "stable",
-  "config": {
-    "allow-plugins": {
-      "php-http/discovery": true
-    }
-  }
+    "name": "elyerr/elymod",
+    "type": "project",
+    "description": "Elymod module project template",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Elymod\\Runtime\\": "runtime/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php runtime/postCreate.php"
+        ]
+    },
+    "minimum-stability": "dev"
 }
