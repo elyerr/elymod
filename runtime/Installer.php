@@ -113,12 +113,8 @@ class Installer
         echo "Installing composer dependencies  ...\n";
 
         $cmd = "composer install --no-interaction --prefer-dist";
-        $cwd = getcwd();
-        chdir($target);
 
         passthru($cmd, $returnVar);
-
-        chdir($cwd);
 
         if ($returnVar === 0) {
             echo "Composer dependencies installed successfully.\n";
