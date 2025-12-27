@@ -18,11 +18,15 @@
     }
   },
   "require": {
+    "elyerr/laravel-runtime": "^1.0",
+    "inertiajs/inertia-laravel": "^2.0",
+    "laravel/framework": "^12.42",
     "elyerr/api-response": "^1.0"
   },
-  "require-dev": {
-    "laravel/framework": "^12.42",
-    "elyerr/laravel-runtime": "v1.*"
+  "scripts": {
+    "post-autoload-dump": [
+      "php artisan assets:publish"
+    ]
   },
   "minimum-stability": "stable",
   "config": {

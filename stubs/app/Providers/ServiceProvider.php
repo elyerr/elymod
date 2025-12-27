@@ -1,9 +1,11 @@
 <?php
 namespace {{ Namespace }}\App\Providers;
 
-use Elyerr\ApiResponse\Exceptions\ReportError;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
+use Elyerr\ApiResponse\Exceptions\ReportError;
 use Illuminate\Support\ServiceProvider as Provider;
 
 class ServiceProvider extends Provider
@@ -65,6 +67,8 @@ class ServiceProvider extends Provider
             $this->registerMiddlewares();
             $this->registerMigrations();
             $this->registerConfigs();
+            $this->registerBladeComponents();
+            $this->loadJsonTranslationsFrom(__DIR__ . '/../../lang');
         }
     }
 
@@ -171,12 +175,12 @@ class ServiceProvider extends Provider
                     Route::group([
                         'prefix' => "{$slugIdentifier}/api",
                         'as' => 'api.',
-                        'middleware' => ['web'],
+                        'middleware' => ['api'],
                         'module' => $this->generateViewPrefix(), // DO NOT REMOVE
                         'module_type' => 'third-party', // DO NOT REMOVE
                         'module_path' => $this->moduleBasePath($this->generateViewPrefix()) // DO NOT REMOVE
                     ], function () {
-                        require $this->routes . '//api.php';
+                        require $this->routes . '/api.php';
                     });
 
                 }
@@ -192,6 +196,18 @@ class ServiceProvider extends Provider
                         'module_path' => $this->moduleBasePath($this->generateViewPrefix()) // DO NOT REMOVE
                     ], function () {
                         require $this->routes . '/web.php'; // DO NOT REMOVE
+                    });
+                }
+
+                if (file_exists($this->routes . '/public.php')) {
+                    Route::group([
+                        'as' => 'public.',
+                        'middleware' => ['web'],
+                        'module' => $this->generateViewPrefix(), // DO NOT REMOVE
+                        'module_type' => 'third-party', // DO NOT REMOVE
+                        'module_path' => $this->moduleBasePath($this->generateViewPrefix()) // DO NOT REMOVE
+                    ], function () {
+                        require $this->routes . '/public.php';
                     });
                 }
             }
@@ -324,5 +340,49 @@ class ServiceProvider extends Provider
     private function isNumericArray(array $array): bool
     {
         return array_keys($array) === range(0, count($array) - 1);
+    }
+
+    /**
+     * Register components
+     * @return void
+     */
+    public function registerBladeComponents(): void
+    {
+        $path = __DIR__ . '/../View/Components';
+
+        if (!File::exists($path)) {
+            return;
+        }
+
+        $files = File::allFiles($path);
+
+        foreach ($files as $file) {
+            if ($file->getExtension() !== 'php') {
+                continue;
+            }
+
+            $baseNamespace = "{$this->generateViewPrefix()}\\App\\View\\Components";
+
+            $relativePath = str_replace([$path . '/', '.php'], '', $file->getPathname());
+
+            $class = $baseNamespace . '\\' . str_replace('/', '\\', $relativePath);
+
+            if (!class_exists($class)) {
+                continue;
+            }
+
+            $reflection = new \ReflectionClass($class);
+
+            if (
+                $reflection->isAbstract() ||
+                !$reflection->isSubclassOf(\Illuminate\View\Component::class)
+            ) {
+                continue;
+            }
+
+            $alias = str("{$this->generateViewPrefix()}{$reflection->getShortName()}")->kebab()->toString();
+
+            Blade::component($alias, $class);
+        }
     }
 }
