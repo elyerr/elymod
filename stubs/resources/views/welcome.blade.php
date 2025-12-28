@@ -146,7 +146,7 @@
             </button>
 
             <div class="hidden md:flex items-center gap-4"> 
-                @if (Route::has('module.test.admin.admin'))
+                @if (Route::has('module.{{ module }}.admin.admin'))
                     <a href="{{ route('module.{{ module }}.admin.admin') }}"
                         class="rounded-lg bg-slate-800 hover:bg-slate-700 px-4 py-2 transition whitespace-nowrap text-sm lg:text-base">
                         <i class="fa-solid fa-lock-open mr-2"></i>{{ __('My Admin') }}
