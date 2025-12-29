@@ -334,7 +334,7 @@
 </template>
 
 <script>
-import VError from "@test/components/VError.vue";
+import VError from "@{{ module }}/components/VError.vue";
 
 export default {
     name: "VSelect",

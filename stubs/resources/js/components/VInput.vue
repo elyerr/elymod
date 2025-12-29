@@ -35,7 +35,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import VError from "@test/components/VError.vue";
+import VError from "@{{ module }}/components/VError.vue";
 
 const props = defineProps({
     modelValue: [String, Number],
