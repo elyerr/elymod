@@ -5,8 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Elymod – Modular Mini Framework for Laravel. Execute 'php artisan assets:publish' within the module to make the public folder (containing assets) publicly accessible.">
-    <title>{{ __('Elymod – Modular Mini Framework for Laravel') }}</title>
+        content="{{ Module }} – Modular Mini Framework for Laravel. Execute 'php artisan assets:publish' within the module to make the public folder (containing assets) publicly accessible.">
+    <title>{{ __('{{ Module }} – Modular Mini Framework for Laravel') }}</title>
+
+    <link rel="icon" href="{{ asset('third-party/{{ module }}/favicon.png') }}" type="image/png">
 
     <link nonce={{ $nonce }} href="{{ asset('third-party/{{ module }}/css/app.css') }}" rel="stylesheet">
     <style nonce="{{ $nonce }}">
@@ -152,7 +154,7 @@
                         <i class="fa-solid fa-lock-open mr-2"></i>{{ __('My Admin') }}
                     </a>
                 @endif
-                <a href="https://github.com/elyerr/elymod" target="_blank"
+                <a href="https://github.com/elyerrlabs/elymod" target="_blank"
                     class="rounded-lg bg-slate-800 hover:bg-slate-700 px-4 py-2 transition whitespace-nowrap text-sm lg:text-base">
                     <i class="fab fa-github mr-2"></i>GitHub
                 </a>
@@ -170,13 +172,13 @@
                 <a href="#isolation"
                     class="text-slate-300 hover:text-indigo-400 transition py-2">{{ __('Module Isolation') }}</a>
                 <div class="pt-4 border-t border-slate-800">
-                    @if (Route::has('module.test.admin.admin'))
-                        <a href="{{ route('module.test.admin.admin') }}"
+                    @if (Route::has('module.{{ module }}.admin.admin'))
+                        <a href="{{ route('module.{{ module }}.admin.admin') }}"
                             class="block rounded-lg bg-slate-800 hover:bg-slate-700 px-4 py-3 transition text-center mb-3">
                             <i class="fa-solid fa-lock-open mr-2"></i>{{ __('My Admin') }}
                         </a>
                     @endif
-                    <a href="https://github.com/elyerr/elymod" target="_blank"
+                    <a href="https://github.com/elyerrlabs/elymod" target="_blank"
                         class="block rounded-lg bg-slate-800 hover:bg-slate-700 px-4 py-3 transition text-center">
                         <i class="fab fa-github mr-2"></i>GitHub
                     </a>
@@ -665,7 +667,7 @@
                 {{ __('Build truly independent OAuth2 modules with Elymod. No dependency conflicts, separate licensing, and familiar Laravel workflow.') }}
             </p>
             <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                <a href="https://github.com/elyerr/elymod" target="_blank"
+                <a href="https://github.com/elyerrlabs/elymod" target="_blank"
                     class="flex-1 min-w-[200px] rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-3 md:px-8 md:py-4 font-semibold hover:from-indigo-500 hover:to-purple-500 transition hover-lift">
                     {{ __('Get Started on GitHub') }}
                 </a>
@@ -711,7 +713,7 @@
                 <div>
                     <h4 class="font-semibold mb-3 md:mb-4">{{ __('Legal') }}</h4>
                     <ul class="space-y-1 md:space-y-2">
-                        <li><a href="https://github.com/elyerr/elymod/blob/main/LICENSE"
+                        <li><a href="https://github.com/elyerrlabs/elymod/blob/main/LICENSE"
                                 class="text-slate-400 hover:text-indigo-400 text-xs md:text-sm transition">{{ __('License') }}</a>
                         </li>
                     </ul>

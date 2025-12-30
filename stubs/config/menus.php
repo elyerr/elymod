@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the {{ Module }}}} package.
+ * This file is part of the {{ Module }} package.
  *
  * It defines shared menu configuration for the identity system.
  * Menus declared here can be merged and consumed by core, system,
