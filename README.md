@@ -1,3 +1,14 @@
+> ⚠️ **Repository Archived / Deprecated**
+>
+> This repository is no longer actively maintained and has been **deprecated**.
+>
+> The official and up-to-date version of this project is now maintained under the **Elyerr Labs organization**:
+>
+> 👉 https://github.com/elyerrlabs
+>
+> Please use the organization repositories for active development, issues, and releases.
+
+
 # Elymod
 
 **Elymod** is a lightweight modular mini-framework inspired by Laravel.  
